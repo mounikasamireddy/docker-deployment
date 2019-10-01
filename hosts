@@ -1,1 +1,1 @@
-54.67.87.6 ansible_user=centos
+localhost ansible_user=centos ansible_connection=local
