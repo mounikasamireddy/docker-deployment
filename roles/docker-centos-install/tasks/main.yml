@@ -1,0 +1,33 @@
+  - name: "Installing Docker Prerequisite packages"
+    yum:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+      - epel-release
+  - name: Install pip
+    yum:
+      name: python-pip
+      update_cache: yes
+      state: present
+  - name: "Configuring docker-ce repo"
+    get_url:
+      url: "{{ docker_repo }}"
+      dest: /etc/yum.repos.d/docker-ce.repo
+      mode: 0644
+  - name: " Installing Docker latest version"
+    yum:
+      name: "{{ dockerce_version }}"
+      state: present
+  - name: " Starting and Enabling Docker service"
+    service:
+      name: docker
+      state: started
+      enabled: yes
+  - name: Install Docker Module for Python
+    pip: 
+      name: docker
+
+

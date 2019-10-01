@@ -1,0 +1,7 @@
+gpg_key:  https://download.docker.com/linux/ubuntu/gpg
+docker_repo: deb https://download.docker.com/linux/ubuntu bionic stable
+dockerce_version: docker-ce=18.06.3~ce~3-0~ubuntu   
+# If you want to use latest version of docker then in the variable you call only docker-ce
+
+
+#dockerce_version: docker-ce

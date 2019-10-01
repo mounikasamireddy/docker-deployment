@@ -1,0 +1,28 @@
+  - name: copy the docker file
+    template:
+      src: Dockerfile
+      dest: "{{ dest_path }}" ######### on remote server destnation path #############
+  - name: copy the index file
+    template:
+      src: index.html
+      dest: "{{ dest_path }}" ######### on remote server destnation path #############
+
+
+  - name: Build Docker image from Dockerfile
+    docker_image:
+      name: httpd  ### name of the docker image ####
+      path: "{{ dest_path}}" #### on the remote server where the docker file is stored #####
+      state: build
+
+  - name: Running the container
+    docker_container:
+      name: httpd
+      image: httpd
+      state: started
+      ports:
+              - "82:80"
+      detach: yes
+    register: "contener-id"
+
+
+

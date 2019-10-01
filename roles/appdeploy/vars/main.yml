@@ -1,0 +1,11 @@
+#source_path: /home/ec2-user/deployment/roles/appdeploy/templates
+dest_path: /home/centos #(for centos servers)
+# For ubuntu servers 
+#dest_path: /home/ubuntu
+# For redhat servers
+#dest_path: /home/ec2-user
+
+
+
+
+

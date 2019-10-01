@@ -1,0 +1,9 @@
+docker_repo:  https://download.docker.com/linux/centos/docker-ce.repo
+dockerce_version: docker-ce-18.06.3.ce-3.el7
+
+#dockerce_version: docker-ce-17.06.0.ce-1.el7.centos
+
+# If you want to use latest version of docker then in the variable you call only docker-ce
+
+
+#dockerce_version: docker-ce

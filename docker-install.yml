@@ -1,0 +1,14 @@
+- name: docker installation
+  hosts: all
+  become: yes
+
+  tasks:
+   - import_role:
+       name:  docker-ubuntu-install
+     when: ansible_distribution == 'Ubuntu'
+   - import_role:
+       name:  docker-centos-install
+     when: ansible_distribution == 'CentOS'
+   - import_role:
+       name:  docker-centos-install
+     when: ansible_distribution == 'RedHat'
