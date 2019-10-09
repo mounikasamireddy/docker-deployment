@@ -1,0 +1,52 @@
+pipeline{
+    agent {
+     node {
+        label 'test-1'
+     }
+    }
+     stages{
+        stage('git installation'){
+            steps{
+               sh 'sudo apt-get install git-core'
+               sh 'git --version'
+            } 
+        }
+         stage('git clone'){
+            steps{
+                  
+               sh 'sudo rm -rf script-for-ansible-installation'
+               sh 'pwd'
+               sh 'git clone https://github.com/mounikasamireddy/script-for-ansible-installation.git'
+               sh 'chmod -R 777 ./*'
+               sh 'ls'
+            }
+        }
+          stage('install ansible'){
+            steps{
+               sh 'sudo sh script-for-ansible-installation/ansible.sh'
+               sh 'pwd'
+            }
+        }
+          stage ('git-clone1'){
+            steps{
+               sh 'sudo rm -rf docker-deployment'    
+               sh 'git clone https://github.com/mounikasamireddy/docker-deployment'
+               sh 'pwd'
+               sh 'chmod -R 777 ./*'
+               sh 'pwd'
+            }
+        }
+         stage('install docker'){
+             
+            steps{
+               sh 'pwd' 
+               sh 'ansible-playbook -i docker-deployment/hosts docker-deployment/docker-install.yml'
+            }
+        }
+         stage('deployment'){
+            steps{
+               sh 'ansible-playbook -i docker-deployment/hosts docker-deployment/deploy.yml'
+            }
+        }
+    }    
+}        
