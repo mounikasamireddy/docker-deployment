@@ -4,6 +4,5 @@
   tasks:
   - name: call compose file
     command: docker-compose up -d 
-    args:
-      chdir: /root/django/docker-nginx-postgres-django-example/
+   
  
