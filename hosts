@@ -1,1 +1,1 @@
-localhost ansible_user=ubuntu ansible_connection=local
+localhost ansible_user=centos ansible_connection=local
